@@ -11,6 +11,8 @@
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
     = stylesheet_link_tag "application", :media => "all"
   %body
+    .pull-right.new-status= link_to "New Incident Report", new_status_path, :class => 'btn btn-inverse'
+    .clear
     .container 
       .row 
         .span12 
@@ -25,7 +27,6 @@
           = bootstrap_flash
           = yield
       %footer
-        %p &copy; Company 2012
     /
       Javascripts
       \==================================================

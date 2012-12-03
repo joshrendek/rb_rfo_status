@@ -2,8 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.new-status { 
+  margin-right: 30px; 
+}
+
 @mixin status-table { 
   th { 
+
     border-top-right-radius: 3px;
     -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset;
     -moz-box-shadow: 0 1px 0 rgba(255,255,255,0.1) inset;
@@ -28,13 +33,22 @@
 
   }
 
+  td { 
+    padding: 15px;
+  }
+
   .status-area { 
     padding: 5px;
   }
 
   .status-header {
     color: white; 
-    font-size: 1.5em;
+    padding-bottom: 8px;
+    font-size: 1.2em;
+  }
+
+  .status-date { 
+    font-size: .75em;
   }
 
   .read-more { 

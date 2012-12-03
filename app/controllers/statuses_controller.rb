@@ -14,6 +14,7 @@ class StatusesController < ApplicationController
   # GET /statuses/1.json
   def show
     @status = Status.find(params[:id])
+    @status_update = StatusUpdate.new
 
     respond_to do |format|
       format.html # show.html.erb

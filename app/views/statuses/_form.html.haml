@@ -11,8 +11,8 @@
         .span4
           = status_updates_form.input :state, :collection => ["Investigating", "Issue", "Resolved", "Monitoring", "Update"], :selected => "Investigating"
         .row
-          .span8.offset1
-            = status_updates_form.input :content, :input_html => {:class => :span10, :style => "height: 200px;"}
+          .span8.offset2
+            = status_updates_form.input :content, :input_html => {:class => :span8, :style => "height: 200px;"}
 
 
   .form-actions
