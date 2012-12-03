@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Status:
+  = @status_update.status
+%p
+  %b State:
+  = @status_update.state
+%p
+  %b Content:
+  = @status_update.content
+
+= link_to 'Edit', edit_status_update_path(@status_update)
+\|
+= link_to 'Back', status_updates_path

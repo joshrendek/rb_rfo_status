@@ -1,0 +1,19 @@
+= simple_form_for(@status) do |f|
+  = f.error_notification
+  .container 
+    .row
+      .span4.offset1
+        = f.label :title
+        = f.text_field :title, :class => :span4
+      .span3
+        = f.input :environment_affected, :collection => ["Production", "Development"], :selected => "Production"
+      = f.fields_for :status_updates do |status_updates_form| 
+        .span4
+          = status_updates_form.input :state, :collection => ["Investigating", "Issue", "Resolved", "Monitoring", "Update"], :selected => "Investigating"
+        .row
+          .span8.offset1
+            = status_updates_form.input :content, :input_html => {:class => :span10, :style => "height: 200px;"}
+
+
+  .form-actions
+    = f.button :submit
