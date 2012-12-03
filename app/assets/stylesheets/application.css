@@ -15,9 +15,12 @@
 .logo { 
   font-size: 2em;
   color: #fff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
 }
 
 .logo h4 { 
   font-weight: normal; 
   color: #5bc0de;
 }
+
+

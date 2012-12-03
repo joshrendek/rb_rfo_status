@@ -1,4 +1,17 @@
 - model_class = Status
+
+.container
+  .row 
+    .span5.offset1
+      %h5 
+        %center Production
+      = render :partial => 'list', :locals => { :statuses => Status.production }
+    .span5.offset1
+      %h5 
+        %center Development
+      = render :partial => 'list', :locals => { :statuses => Status.development }
+
+
 .page-header
   %h1=t '.title', :default => model_class.model_name.human.pluralize
 %table.table.table-striped

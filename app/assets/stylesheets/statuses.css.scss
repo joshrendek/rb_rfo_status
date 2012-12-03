@@ -1,3 +1,55 @@
 // Place all the styles related to the Statuses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@mixin status-table { 
+  th { 
+    border-top-right-radius: 3px;
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset;
+    -moz-box-shadow: 0 1px 0 rgba(255,255,255,0.1) inset;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset;
+
+    background: #323738; /* Old browsers */
+    background: -moz-linear-gradient(top, #323738 0%, #35393a 50%, #272b30 51%, #272b30 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#323738), color-stop(50%,#35393a), color-stop(51%,#272b30), color-stop(100%,#272b30)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #323738 0%,#35393a 50%,#272b30 51%,#272b30 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #323738 0%,#35393a 50%,#272b30 51%,#272b30 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #323738 0%,#35393a 50%,#272b30 51%,#272b30 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #323738 0%,#35393a 50%,#272b30 51%,#272b30 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#323738', endColorstr='#272b30',GradientType=0 ); /* IE6-9 */
+
+    font-size: 1.2em;
+    font-weight: normal !important;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+
+    b { 
+      font-size: .75em;
+    }
+
+  }
+
+  .status-area { 
+    padding: 5px;
+  }
+
+  .status-header {
+    color: white; 
+    font-size: 1.5em;
+  }
+
+  .read-more { 
+    font-size: .75em;
+  }
+}
+
+.status-table  { 
+  @include status-table;
+}
+
+.status-table-small { 
+  @include status-table; 
+  th { 
+    font-size: 1em;
+  }
+}
+

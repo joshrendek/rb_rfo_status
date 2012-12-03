@@ -1,4 +1,19 @@
-- model_class = Statu
+- model_class = Status
+%table.table.table-bordered.status-table
+  %thead.well
+    %th 
+      .pull-left
+        =link_to @status.title, @status
+      .pull-right
+        %b= @status.environment_affected
+        %button.btn.btn-danger.btn-mini 10m
+  %tbody 
+    - @status.status_updates.each do |update| 
+      %tr 
+        %td
+          .status-header=update.state
+          .status-content=update.content
+
 .page-header
   %h1=t '.title', :default => model_class.model_name.human
 

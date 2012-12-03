@@ -1,0 +1,15 @@
+- statuses.each do |status| 
+  %table.table.table-bordered.status-table-small
+    %thead.well
+      %th 
+        .pull-left
+          =link_to status.title, status
+        .pull-right
+          %button.btn.btn-danger.btn-mini 10m
+    %tbody 
+      %tr 
+        %td 
+          %div
+            = status.status_updates.last.content
+          .pull-right.read-more
+            = link_to "Read more...", status
