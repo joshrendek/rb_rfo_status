@@ -14,6 +14,7 @@ gem 'twitter-bootstrap-rails'
 gem 'json'
 gem 'haml' 
 gem 'haml-rails'
+gem 'rest-client'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -29,6 +30,7 @@ end
 group :development, :test do 
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'pry'
 end
 
 gem 'jquery-rails'
