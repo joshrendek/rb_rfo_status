@@ -4,15 +4,21 @@ class PagerDuty
     @subdomain = ENV['PAGERDUTY_DOMAIN'] || ""
   end
 
+  class << self 
+    def incident_link(incident_id)
+      "https://#{@subdomain}.pagerduty.com/incidents/#{incident_id}"
+    end
+  end
+
   def get_incidents
     incidents = request 
-    incidents.collect {|x| [x['id'], x['incident_key']]}
+    incidents.collect {|x| [x['incident_key'] || x['trigger_summary_data']['subject'], x['id']]}
   end
 
   def request 
     begin
-      JSON.parse(RestClient.get "https://#{@subdomain}.pagerduty.com/api/v1/incidents", 
-        :authorization => "Token token=#{@api_key}", :accept => :json)['incidents']
+      JSON.parse(RestClient.get "https://#{@subdomain}.pagerduty.com/api/v1/incidents?status=triggered,acknowledged", 
+                 :authorization => "Token token=#{@api_key}", :accept => :json)['incidents']
     rescue StandardError => e 
       p e
     end

@@ -1,4 +1,12 @@
 - model_class = Status
+
+- if @status.service_integration_id.present?
+  %table.table.table-bordered.status-table.span9.offset1
+    %thead.well
+      %th 
+        %button.btn.btn-success.btn-small.disabled
+          =link_to "PD", PagerDuty.incident_link(@status.service_integration_id)
+        %small This incident is linked to an alert in PagerDuty.
 %table.table.table-bordered.status-table.span9.offset1
   %thead.well
     %th 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121202222738) do
+ActiveRecord::Schema.define(:version => 20121204035319) do
 
   create_table "status_updates", :force => true do |t|
     t.integer  "status_id"
@@ -28,8 +28,10 @@ ActiveRecord::Schema.define(:version => 20121202222738) do
     t.integer  "duration"
     t.string   "environment_affected"
     t.boolean  "closed"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.string   "service_integration_id"
+    t.string   "service_integration_title"
   end
 
 end
