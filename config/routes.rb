@@ -1,8 +1,12 @@
 RubyRfoStatus::Application.routes.draw do
-  resources :status_updates
 
 
-  resources :statuses
+  resources :settings
+
+
+  resources :statuses do 
+    resources :status_updates
+  end
 
   root :to => "statuses#index"
 

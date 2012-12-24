@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121204035319) do
+ActiveRecord::Schema.define(:version => 20121205043746) do
+
+  create_table "settings", :force => true do |t|
+    t.string   "setting_key"
+    t.string   "setting_value"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "status_updates", :force => true do |t|
     t.integer  "status_id"

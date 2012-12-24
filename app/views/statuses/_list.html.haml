@@ -5,11 +5,22 @@
         .pull-left
           =link_to status.title, status
         .pull-right
-          %button.btn.btn-danger.btn-mini 10m
+          %b= status.environment_affected
+          - if status.duration.nil?
+            %button.btn.btn-danger.btn-mini
+              =status.duration || time_ago_in_words(status.created_at) 
+              ago
+          - else 
+            %button.btn.btn-inverse.disabled.btn-mini
+              = "#{status.duration}m Duration"
     %tbody 
       %tr 
         %td.well 
           %div
-            = status.status_updates.last.content
+            = status.status_updates.first.content
+            %br
           .pull-right.read-more
             = link_to "Read more...", status
+          - if status.service_integration_id.present?
+            .pull-left.read-more
+              =link_to "PagerDuty", PagerDuty.incident_link(status.service_integration_id)

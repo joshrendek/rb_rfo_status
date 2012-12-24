@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Setting key:
+  = @setting.setting_key
+%p
+  %b Setting value:
+  = @setting.setting_value
+
+= link_to 'Edit', edit_setting_path(@setting)
+\|
+= link_to 'Back', settings_path

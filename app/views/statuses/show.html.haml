@@ -7,6 +7,8 @@
         %button.btn.btn-success.btn-small.disabled
           =link_to "PD", PagerDuty.incident_link(@status.service_integration_id)
         %small This incident is linked to an alert in PagerDuty.
+
+
 %table.table.table-bordered.status-table.span9.offset1
   %thead.well
     %th 
@@ -14,7 +16,14 @@
         =link_to @status.title, @status
       .pull-right
         %b= @status.environment_affected
-        %button.btn.btn-danger.btn-mini 10m
+        - if @status.duration.nil?
+          %button.btn.btn-danger.btn-mini
+            =@status.duration || time_ago_in_words(@status.created_at) 
+            ago
+        - else 
+          %button.btn.btn-inverse.disabled.btn-mini
+            = "#{@status.duration}m Duration"
+
   %tbody 
     - @status.status_updates.each do |update| 
       %tr 
@@ -26,20 +35,21 @@
             = time_ago_in_words(update.updated_at)
             ago, 
             = update.updated_at.strftime("%B %d,%Y %H:%M %p %Z")
-
-%table.table.table-bordered.status-table.span9.offset1
-  %thead.well
-    %th New Status Update
-  %tbody 
-    %tr 
-      %td.well
-        = simple_form_for(@status_update) do |f| 
-          .row
-            .span8
-              = f.input :content, :input_html => {:class => :span8, :style => "height: 100px;"}
-          .row
-            .span8
-              = f.input :state, :collection => ["Investigating", "Issue", "Resolved", "Monitoring", "Update"], :selected => "Investigating", :input_html => { :class => :span8 }
-          %center
-            = f.submit "Update Incident", :class => "btn btn-inverse"
+- if @status.duration.nil?
+  %table.table.table-bordered.status-table.span9.offset1
+    %thead.well
+      %th New Status Update
+    %tbody 
+      %tr 
+        %td.well
+          = simple_form_for([@status, @status_update]) do |f| 
+            = f.hidden_field :status_id, :value => @status.id
+            .row
+              .span8
+                = f.input :content, :input_html => {:class => :span8, :style => "height: 100px;"}
+            .row
+              .span8
+                = f.input :state, :collection => ["Investigating", "Issue", "Resolved", "Monitoring", "Update"], :selected => "Update", :input_html => { :class => :span8 }
+            %center
+              = f.submit "Update Incident", :class => "btn btn-inverse"
 

@@ -1,0 +1,21 @@
+%h1 Listing settings
+
+%table
+  %tr
+    %th Setting key
+    %th Setting value
+    %th
+    %th
+    %th
+
+  - @settings.each do |setting|
+    %tr
+      %td= setting.setting_key
+      %td= setting.setting_value
+      %td= link_to 'Show', setting
+      %td= link_to 'Edit', edit_setting_path(setting)
+      %td= link_to 'Destroy', setting, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Setting', new_setting_path
