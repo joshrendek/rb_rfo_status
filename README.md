@@ -1,3 +1,7 @@
+# Downloads 
+
+* v0.1: https://s3.amazonaws.com/josh-opensource/rb_rfo_status-0.1.war
+
 # Installation
 
 Download the .war file and deploy it in your favorite container (Tomcat, etc). Once the war file is extracted you can modify the config settings.
