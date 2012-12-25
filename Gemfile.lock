@@ -33,6 +33,8 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     arel (3.0.2)
+    bcrypt-ruby (3.0.1)
+    bcrypt-ruby (3.0.1-java)
     bouncy-castle-java (1.5.0146.1)
     builder (3.0.4)
     coderay (1.0.8)
@@ -44,6 +46,12 @@ GEM
       execjs
     coffee-script-source (1.4.0)
     commonjs (0.2.6)
+    dalli (2.6.0)
+    devise (2.1.2)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (~> 3.1)
+      warden (~> 1.2.1)
     diff-lcs (1.1.3)
     erubis (2.7.0)
     execjs (1.4.0)
@@ -63,6 +71,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jruby-openssl (0.7.7)
       bouncy-castle-java (>= 1.5.0146.1)
+    json (1.7.5)
     json (1.7.5-java)
     less (2.2.2)
       commonjs (~> 0.2.6)
@@ -76,7 +85,12 @@ GEM
     method_source (0.8.1)
     mime-types (1.19)
     multi_json (1.4.0)
+    orm_adapter (0.4.0)
     polyglot (0.3.3)
+    pry (0.9.10)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.3.1)
     pry (0.9.10-java)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -155,6 +169,8 @@ GEM
     uglifier (1.3.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    warden (1.2.1)
+      rack (>= 1.0)
 
 PLATFORMS
   java
@@ -162,6 +178,8 @@ PLATFORMS
 DEPENDENCIES
   activerecord-jdbcmysql-adapter
   coffee-rails (~> 3.2.1)
+  dalli
+  devise
   haml
   haml-rails
   jquery-rails

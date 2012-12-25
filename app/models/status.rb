@@ -4,7 +4,7 @@ class Status < ActiveRecord::Base
 
   accepts_nested_attributes_for :status_updates
 
-
   scope :production, where(environment_affected: 'Production').order('id desc')
   scope :development, where(environment_affected: 'Development').order('id desc')
+
 end

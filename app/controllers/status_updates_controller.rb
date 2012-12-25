@@ -1,10 +1,13 @@
 class StatusUpdatesController < ApplicationController
+  before_filter :authenticate_user!
 
   # POST /status_updates
   # POST /status_updates.json
   def create
     @status = Status.find(params[:status_id])
     @status_update = @status.status_updates.build(params[:status_update])
+    expire_action(:controller => 'statuses', :action => 'index')
+    expire_action(:controller => 'statuses', :action => 'show', :id => @status.id)
 
     respond_to do |format|
       if @status_update.save

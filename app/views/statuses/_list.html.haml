@@ -17,7 +17,7 @@
       %tr 
         %td.well 
           %div
-            = status.status_updates.first.content
+            = simple_format status.status_updates.first.content
             %br
           .pull-right.read-more
             = link_to "Read more...", status

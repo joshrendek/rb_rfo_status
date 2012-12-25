@@ -13,11 +13,13 @@
         .row
           .span8.offset2
             = status_updates_form.input :content, :input_html => {:class => :span8, :style => "height: 200px;"}
-    .row 
-      .span4.offset4
-        = f.input :service_integration_id, :collection => PagerDuty.new.get_incidents
+    - if PagerDuty.subdomain.present?
+      .row 
+        .span4 
+          = f.label "Link to Service"
+          = f.input :service_integration_id, :collection => PagerDuty.new.get_incidents
 
 
-    .form-actions
-      %center
-        = f.submit "Create Incident", :class => "btn btn-inverse"
+  .form-actions
+    %center
+      = f.button :submit, :class => 'btn btn-inverse'

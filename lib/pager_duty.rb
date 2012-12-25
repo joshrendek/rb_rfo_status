@@ -8,9 +8,16 @@ class PagerDuty
     def incident_link(incident_id)
       "https://#{@subdomain}.pagerduty.com/incidents/#{incident_id}"
     end
+
+    def subdomain 
+      @subdomain
+    end
+
   end
 
+
   def get_incidents
+    return [] if @api_key.empty?
     incidents = request 
     incidents.collect {|x| [x['incident_key'] || x['trigger_summary_data']['subject'], x['id']]}
   end

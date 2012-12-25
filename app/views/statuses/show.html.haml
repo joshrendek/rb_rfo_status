@@ -29,13 +29,13 @@
       %tr 
         %td.well
           .status-header=update.state
-          .status-content=update.content
+          .status-content=simple_format update.content
           .status-date 
             Posted 
             = time_ago_in_words(update.updated_at)
             ago, 
             = update.updated_at.strftime("%B %d,%Y %H:%M %p %Z")
-- if @status.duration.nil?
+- if @status.duration.nil? && user_signed_in?
   %table.table.table-bordered.status-table.span9.offset1
     %thead.well
       %th New Status Update

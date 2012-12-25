@@ -12,7 +12,8 @@
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
     = stylesheet_link_tag "application", :media => "all"
   %body
-    .pull-right.new-status= link_to "New Incident Report", new_status_path, :class => 'btn btn-inverse'
+    - if user_signed_in?
+      .pull-right.new-status= link_to "New Incident Report", new_status_path, :class => 'btn btn-inverse'
     .clear
     .container 
       .row 
@@ -31,7 +32,12 @@
       .row 
         .span12 
           %center 
-            = link_to "Settings", settings_path
+            - if user_signed_in?
+              = link_to "Settings", settings_path
+              |
+              = link_to "Logout", destroy_user_session_path, :method => :delete
+            - else 
+              = link_to "Sign in", new_user_session_path
       %footer
     /
       Javascripts

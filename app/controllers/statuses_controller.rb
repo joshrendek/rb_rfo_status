@@ -1,4 +1,14 @@
 class StatusesController < ApplicationController
+  before_filter :authenticate_user!, :only => [:create, :new, :edit]
+
+  caches_action :index, :expires_in => 5.minutes
+  caches_action :show, :expires_in => 5.minutes
+
+  def show 
+    @status = Status.find(params[:id])
+    @status_update = StatusUpdate.new
+  end
+
   # GET /statuses
   # GET /statuses.json
   def index
@@ -10,17 +20,6 @@ class StatusesController < ApplicationController
     end
   end
 
-  # GET /statuses/1
-  # GET /statuses/1.json
-  def show
-    @status = Status.find(params[:id])
-    @status_update = StatusUpdate.new
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @status }
-    end
-  end
 
   # GET /statuses/new
   # GET /statuses/new.json
@@ -43,6 +42,7 @@ class StatusesController < ApplicationController
   # POST /statuses.json
   def create
     @status = Status.new(params[:status])
+    expire_action(:controller => 'statuses', :action => 'index')
 
     respond_to do |format|
       if @status.save

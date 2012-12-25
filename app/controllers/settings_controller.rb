@@ -1,4 +1,7 @@
 class SettingsController < ApplicationController
+
+  before_filter :authenticate_user!
+  before_filter :setup_defaults
   # GET /settings
   # GET /settings.json
   def index
@@ -7,17 +10,6 @@ class SettingsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @settings }
-    end
-  end
-
-  # GET /settings/1
-  # GET /settings/1.json
-  def show
-    @setting = Setting.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @setting }
     end
   end
 
@@ -44,7 +36,7 @@ class SettingsController < ApplicationController
 
     respond_to do |format|
       if @setting.save
-        format.html { redirect_to @setting, notice: 'Setting was successfully created.' }
+        format.html { redirect_to settings_path, notice: 'Setting was successfully created.' }
         format.json { render json: @setting, status: :created, location: @setting }
       else
         format.html { render action: "new" }
@@ -60,7 +52,7 @@ class SettingsController < ApplicationController
 
     respond_to do |format|
       if @setting.update_attributes(params[:setting])
-        format.html { redirect_to @setting, notice: 'Setting was successfully updated.' }
+        format.html { redirect_to settings_path, notice: 'Setting was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -79,5 +71,10 @@ class SettingsController < ApplicationController
       format.html { redirect_to settings_url }
       format.json { head :no_content }
     end
+  end
+
+  private 
+  def setup_defaults 
+    Setting.defaults
   end
 end

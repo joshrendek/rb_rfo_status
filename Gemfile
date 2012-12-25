@@ -16,6 +16,8 @@ gem 'haml'
 gem 'haml-rails'
 gem 'rest-client'
 gem 'simple_form'
+gem 'devise'
+gem 'dalli'
 
 # Gems used only for assets and not required
 # in production environments by default.
