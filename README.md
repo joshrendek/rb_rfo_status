@@ -5,6 +5,7 @@ Download the .war file and deploy it in your favorite container (Tomcat, etc). O
 To run migrations on an extracted WAR file:
 
 ```
+cd rb_rfo_status/WEB-INF
 sudo RAILS_ENV=production BUNDLE_WITHOUT=development:test BUNDLE_GEMFILE=Gemfile GEM_HOME=gems java -cp lib/jruby-core-1.7.1.jar:lib/jruby-stdlib-1.7.1.jar:lib/gems-gems-activerecord-jdbc-adapter-1.2.2.1-lib-arjdbc-jdbc-adapter_java.jar:lib/gems-gems-jdbc-mysql-5.1.13-lib-mysql-connector-java-5.1.13.jar org.jruby.Main -S rake db:migrate
 ```
 
