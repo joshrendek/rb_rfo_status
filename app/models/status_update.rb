@@ -6,6 +6,13 @@ class StatusUpdate < ActiveRecord::Base
 
   after_create :update_status_elapsed_time, :if => Proc.new { self.state == "Resolved" }
 
+  after_create :touch_status 
+
+  def touch_status
+    self.status.touch
+    self.status.save
+  end
+
 
   def update_status_elapsed_time 
     minutes_resolved_in = (((Time.now - self.status.created_at))/60).round

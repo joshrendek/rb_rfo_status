@@ -1,8 +1,8 @@
 class StatusesController < ApplicationController
   before_filter :authenticate_user!, :only => [:create, :new, :edit]
 
-  caches_action :index, :expires_in => 5.minutes
   caches_action :show, :expires_in => 5.minutes
+  cache_sweeper :status_sweeper
 
   def show 
     @status = Status.find(params[:id])
@@ -42,7 +42,6 @@ class StatusesController < ApplicationController
   # POST /statuses.json
   def create
     @status = Status.new(params[:status])
-    expire_action(:controller => 'statuses', :action => 'index')
 
     respond_to do |format|
       if @status.save

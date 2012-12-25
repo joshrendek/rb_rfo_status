@@ -34,6 +34,7 @@ group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'pry'
+  gem 'warbler'
 end
 
 gem 'jquery-rails'

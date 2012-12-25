@@ -1,15 +1,15 @@
 - model_class = Status
 
-
-.container
-  .row 
-    .span5.offset1
-      %h5 
-        %center Production
-      = render :partial => 'list', :locals => { :statuses => Status.production }
-    .span5.offset1
-      %h5 
-        %center Development
-      = render :partial => 'list', :locals => { :statuses => Status.development }
+- cache('status_index', :expires_in => 5.minutes) do
+  .container
+    .row 
+      .span5.offset1
+        %h5 
+          %center Production
+        = render :partial => 'list', :locals => { :statuses => Status.production }
+      .span5.offset1
+        %h5 
+          %center Development
+        = render :partial => 'list', :locals => { :statuses => Status.development }
 
 
