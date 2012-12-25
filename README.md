@@ -26,7 +26,7 @@ sudo RAILS_ENV=production BUNDLE_WITHOUT=development:test BUNDLE_GEMFILE=Gemfile
 
 # Cacheing
 
-THe main page and invidual status's are cached for 5 minutes (or when a new status or update is made, whichever comes first).
+The main page and invidual status's are cached for 5 minutes (or when a new status or update is made, whichever comes first).
 
 # Extra configuration 
 
