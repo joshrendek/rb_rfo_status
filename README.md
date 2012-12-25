@@ -17,7 +17,7 @@ sudo RAILS_ENV=production BUNDLE_WITHOUT=development:test BUNDLE_GEMFILE=Gemfile
 
 ## Homepage 
 
-![](https://www.evernote.com/shard/s4/sh/2d0d3ade-b5d7-4219-a22b-9fc3e817a1fd/062b6169d4a7ff8ff5718b7bac9363c7/res/85465ff1-4887-45ff-936a-0a2b6c501ded/skitch.png?resizeSmall&width=832)
+![](https://www.evernote.com/shard/s4/sh/dd1aa9b9-cfcf-4257-af11-3d17d3f1e8dd/c7917a5540f04a60eacad189479e799c/res/6a125eeb-21c8-4f96-9ced-21169a89c527/skitch.png)
 
 ## Creating an Incident 
 
