@@ -1,4 +1,0 @@
-== Environment variables 
-
-PAGEDUTY_KEY: your API key
-PAGEDUTY_DOMAIN: your pager duty subdomain
